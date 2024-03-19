@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="niccoboa"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-19 12:11:22 "/>
+        <attribute name="created" value="bmljY29ib2E7TkIwNTsyMDI0LTAzLTE5OyIxMDoxNjowNiAiOzIyNjU="/>
+        <attribute name="edited" value="bmljY29ib2E7TkIwNTsyMDI0LTAzLTE5OyIxMjoxMToyMiAiOzE7MjM2OA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Conversione Binario --&gt; Decimale"/>
+            <declare name="x, y, c, p" type="Integer" array="False" size=""/>
+            <declare name="app" type="String" array="False" size=""/>
+            <comment text="RandomBin: funzione che genera un numero binario casuale (come intero)"/>
+            <assign variable="x" expression="RandomBin()"/>
+            <assign variable="y" expression="0"/>
+            <assign variable="p" expression="0"/>
+            <comment text="ToString: converte un intero (x) in una stringa (casting)"/>
+            <assign variable="app" expression="ToString(x)"/>
+            <for variable="c" start="0" end="len(app)-1" direction="inc" step="1">
+                <assign variable="p" expression="len(app)-1 - c"/>
+                <assign variable="y" expression="y + ToInteger(char(app,c)) * 2^p"/>
+            </for>
+            <output expression="x &amp; &quot; &#10140; &quot; &amp; y" newline="True"/>
+        </body>
+    </function>
+    <function name="RandomBin" type="Integer" variable="binN">
+        <parameters/>
+        <body>
+            <declare name="binN, i" type="Integer" array="False" size=""/>
+            <declare name="n" type="Integer" array="False" size=""/>
+            <declare name="app" type="String" array="False" size=""/>
+            <assign variable="app" expression="&quot;&quot;"/>
+            <assign variable="n" expression="Random(10)"/>
+            <for variable="i" start="0" end="n" direction="inc" step="1">
+                <assign variable="app" expression="app &amp; ToString(Random(2))"/>
+            </for>
+            <assign variable="binN" expression="ToInteger(app)"/>
+        </body>
+    </function>
+</flowgorithm>
